@@ -1,0 +1,98 @@
+body, html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #333;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        #content {
+            display: none;
+            text-align: center;
+        }
+
+        #card-container {
+            position: relative;
+            width: 150px;
+            height: 200px;
+            margin: 20px auto;
+            perspective: 1000px;
+        }
+
+        #envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            cursor: pointer;
+        }
+
+        #envelope.open {
+            transform: rotateX(-180deg);
+        }
+
+        #envelope-front, #envelope-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        #envelope-front {
+            background-color: #e0e0e0;
+        }
+
+        #envelope-back {
+            background-color: #fff;
+            transform: rotateX(180deg);
+        }
+
+        .amor #envelope-back { background-color: red; }
+        .paz #envelope-back { background-color: blue; }
+        .felicidade #envelope-back { background-color: yellow; color: black; }
+
+        .hearts {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: currentColor;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0;
+            animation: float 2s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
